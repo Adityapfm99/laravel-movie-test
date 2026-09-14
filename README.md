@@ -1,65 +1,68 @@
-# Movie Finder App
+# Movie Finder
 
-Movie Finder is a Laravel-based movie discovery application for searching movies via OMDb, viewing details, and managing favorites. The app includes login protection, multi-language support, infinite scroll, and lazy-loaded poster images.
+Movie Finder is a Laravel-based movie search and detail application that uses the OMDb API to browse films, view details, and manage a favorite list. The application implements login protection, search/filtering, empty-state handling, and a dark themed UI.
 
 ## Demo URL
 
-- Local demo: http://127.0.0.1:8000/login
-- Login credentials:
-  - Username: aldmic
-  - Password: 123abc123
+- Local development: http://127.0.0.1:8000/login
+- Live demo: use the deployed application URL when available
 
-> This environment cannot directly upload source or demo files to Google Drive or public hosting, but the app is fully runnable locally and the project is prepared for that handoff.
+> The project source code should not be publicly published on GitHub/GitLab. For submission, use a private repository or a restricted-access Google Drive link, while the demo app itself can be hosted publicly.
 
 ## Features
 
-- Login page with credential validation
-- Protected movie list and detail pages
-- Search by movie keyword
-- Infinite scroll on the movie list
-- Movie detail page with metadata
-- Add and remove favorite movies from both list and detail pages
-- Favorites page with delete support
-- English and Indonesian language support
-- Lazy-loading for posters
-- Empty state handling for no results
+- Login system with protected routes
+- Movie search and filtering
+- Movie list with card-based layout
+- Movie detail page with complete metadata
+- Add/remove favorite functionality
+- Favorites page
+- Empty state for no results
+- English and Indonesian locale support
+- OMDb API integration
 
-## Libraries and Technologies
+## Technologies and Libraries
 
-- PHP 8.3+
-- Laravel 13.x
+- PHP
+- Laravel
+- Blade templating
 - Guzzle HTTP client
-- Blade templating engine
+- OMDb API
 - Session-based authentication
-- Custom middleware for locale and auth checks
+- Custom middleware for auth and locale handling
 
 ## Architecture
 
-The app uses a standard Laravel MVC architecture:
+This project follows the standard Laravel MVC architecture:
 
-- Routes: routes/web.php
-- Controller logic: app/Http/Controllers/MovieController.php
-- Middleware: app/Http/Middleware/EnsureMovieUserAuthenticated.php and app/Http/Middleware/SetLocale.php
-- Views: resources/views
-- Language files: resources/lang
+- Routes: `routes/web.php`
+- Controller: `app/Http/Controllers/MovieController.php`
+- Middleware: `app/Http/Middleware/EnsureMovieUserAuthenticated.php`, `app/Http/Middleware/SetLocale.php`
+- Views: `resources/views`
+- Language files: `resources/lang`
+- HTTP data integration: OMDb API through Guzzle
 
-The flow is request -> route -> controller -> view, with OMDb responses fetched via HTTP and favorite state stored in the session.
+The flow is request -> route -> controller -> view, with movie data retrieved from OMDb and favorite state stored in session.
 
 ## Screenshots
 
+The app includes a modern dark-themed interface for the login screen, movie list page, and movie detail page.
+
 ### Login page
 
-![Login page](https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1200&q=80)
+![Login page](docs/screenshots/login.png)
 
 ### Movie list page
 
-![Movie list page](https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=1200&q=80)
+![Movie listing](docs/screenshots/movies.png)
 
 ### Movie detail page
 
-![Movie detail page](https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=1200&q=80)
+![Movie detail](docs/screenshots/detail.png)
 
-## Run locally
+> Note: For submission, replace the placeholder screenshot paths above with the actual screenshots captured from the running application and upload them to the project folder or a restricted-access asset location.
+
+## Run Locally
 
 ```bash
 cd /Users/adityas/Work/cyber/laravel-movie-test
@@ -69,7 +72,7 @@ php artisan key:generate
 php artisan serve --host=127.0.0.1 --port=8000
 ```
 
-Then open:
+Then open the app in the browser:
 
 ```text
 http://127.0.0.1:8000/login
@@ -77,10 +80,10 @@ http://127.0.0.1:8000/login
 
 ## Notes
 
-- OMDb API key is configured via the OMDB_API_KEY environment variable with a local fallback.
-- Default language is English, with Indonesian available via the locale switch.
-- Static text is localized; OMDb API output remains as returned by the API.
+- OMDb API key is configured through the `OMDB_API_KEY` environment variable.
+- The app uses session-based authentication and protected routes.
+- Proper empty-state handling is implemented whenever data is missing or not found.
 
 ## License
 
-This project is intended for technical test implementation and local/demo use only.
+This project is intended for coursework/demo use and should be shared with restricted access only unless the assignment explicitly allows broader publication.
