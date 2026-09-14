@@ -1,4 +1,4 @@
-FROM php:8.3-cli
+FROM php:8.5-cli
 
 WORKDIR /var/www/html
 
@@ -10,8 +10,10 @@ RUN apt-get update && apt-get install -y \
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 COPY . /var/www/html
+COPY .env.example /var/www/html/.env
 
-RUN composer install --no-interaction --prefer-dist --no-progress --optimize-autoloader
+RUN composer install --no-interaction --prefer-dist --no-progress --no-scripts --optimize-autoloader
+RUN php artisan key:generate --force
 RUN npm install && npm run build
 
 EXPOSE 8000
