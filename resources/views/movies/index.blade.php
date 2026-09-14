@@ -25,7 +25,7 @@
     <div class="hero">
         <h2>{{ __('messages.movies') }}</h2>
         <form method="GET" action="{{ route('movies.index') }}" class="search-form">
-            <input type="search" name="q" value="{{ old('q', $search ?? '') }}" placeholder="{{ __('messages.search_movies') }}" aria-label="search">
+            <input type="search" name="q" value="{{ old('q', request()->query('q', '')) }}" placeholder="{{ __('messages.search_movies') }}" aria-label="search">
             <button type="submit" class="btn btn-primary">{{ __('messages.search_button') }}</button>
         </form>
     </div>

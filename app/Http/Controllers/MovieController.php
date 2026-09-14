@@ -117,7 +117,7 @@ class MovieController extends Controller
             return redirect()->route('login');
         }
 
-        $search = trim((string) $request->query('q', 'star')) ?: 'star';
+        $search = trim((string) $request->query('q', '')) ?: '';
         $page = max(1, (int) $request->query('page', 1));
         $payload = $this->searchMovies($search, $page);
 
@@ -140,7 +140,7 @@ class MovieController extends Controller
             return response()->json(['error' => __('messages.session_expired')], 401);
         }
 
-        $search = trim((string) $request->query('q', 'star')) ?: 'star';
+        $search = trim((string) $request->query('q', '')) ?: '';
         $page = max(1, (int) $request->query('page', 1));
 
         return response()->json($this->searchMovies($search, $page));
@@ -148,7 +148,7 @@ class MovieController extends Controller
 
     public function searchMovies(string $search, int $page): array
     {
-        $query = $search ?: 'star';
+        $query = $search !== '' ? $search : 'star';
         $data = $this->fetchOmdb(['s' => $query, 'page' => $page]);
 
         if (($data['Response'] ?? 'False') !== 'True') {

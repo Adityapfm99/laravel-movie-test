@@ -13,20 +13,18 @@
             @csrf
             <div class="field">
                 <label for="username">{{ __('messages.username') }}</label>
-                <input id="username" type="text" name="username" value="{{ old('username') }}" placeholder="aldmic" required>
+                <input id="username" type="text" name="username" value="{{ old('username') }}" placeholder="Username" required>
             </div>
 
             <div class="field">
                 <label for="password">{{ __('messages.password') }}</label>
-                <input id="password" type="password" name="password" value="{{ old('password') }}" placeholder="123abc123" required>
+                <input id="password" type="password" name="password" value="{{ old('password') }}" placeholder="Password" required>
             </div>
 
             <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 8px;">
                 {{ __('messages.login_button') }}
             </button>
         </form>
-
-        <div class="footer-note">Username: aldmic • Password: 123abc123</div>
     </div>
 </div>
 @endsection
