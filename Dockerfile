@@ -19,4 +19,4 @@ RUN npm install && npm run build
 
 EXPOSE 8000
 
-CMD bash -lc "php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=${PORT:-8000}"
+CMD bash -lc "touch /tmp/laravel-movie-test.sqlite && chmod 666 /tmp/laravel-movie-test.sqlite && DB_CONNECTION=sqlite DB_DATABASE=/tmp/laravel-movie-test.sqlite php artisan migrate --force && DB_CONNECTION=sqlite DB_DATABASE=/tmp/laravel-movie-test.sqlite php artisan serve --host=0.0.0.0 --port=${PORT:-8000}"
