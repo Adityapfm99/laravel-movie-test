@@ -10,7 +10,6 @@ RUN apt-get update && apt-get install -y \
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 COPY . /var/www/html
-COPY .env.example /var/www/html/.env
 
 RUN printf '%s\n' \
     'APP_NAME=Laravel' \
@@ -27,6 +26,7 @@ RUN printf '%s\n' \
     'CACHE_STORE=database' \
     'QUEUE_CONNECTION=database' \
     'SESSION_DRIVER=database' \
+    'SESSION_SECURE_COOKIE=true' \
     > /var/www/html/.env
 
 RUN git config --global --add safe.directory /var/www/html
