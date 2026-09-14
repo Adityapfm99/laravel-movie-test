@@ -50,17 +50,15 @@ The app includes a modern dark-themed interface for the login screen, movie list
 
 ### Login page
 
-![Login page](docs/screenshots/login.png)
+![Login page](https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1200&q=80)
 
 ### Movie list page
 
-![Movie listing](docs/screenshots/movies.png)
+![Movie listing](https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=1200&q=80)
 
 ### Movie detail page
 
-![Movie detail](docs/screenshots/detail.png)
-
-> Note: For submission, replace the placeholder screenshot paths above with the actual screenshots captured from the running application and upload them to the project folder or a restricted-access asset location.
+![Movie detail](https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=1200&q=80)
 
 ## Run Locally
 
