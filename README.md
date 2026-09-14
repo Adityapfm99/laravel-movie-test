@@ -1,64 +1,57 @@
 # Movie Finder
 
-Movie Finder is a Laravel-based movie search and detail application that uses the OMDb API to browse films, view details, and manage a favorite list. The application implements login protection, search/filtering, empty-state handling, and a dark themed UI.
+Movie Finder is a Laravel-based movie search and details application that uses the OMDb API to browse films, open detail pages, and manage a movie list experience with a modern dark user interface.
 
 ## Demo URL
 
 - Local development: http://127.0.0.1:8000/login
-- Live demo: use the deployed application URL when available
+- Demo access: use the deployed app URL if available
 
-> The project source code should not be publicly published on GitHub/GitLab. For submission, use a private repository or a restricted-access Google Drive link, while the demo app itself can be hosted publicly.
+> This project is intended for assignment/demo purposes and should not be published as public source code unless explicitly required. The app demo can be public while the source repository remains private or restricted.
 
 ## Features
 
-- Login system with protected routes
-- Movie search and filtering
-- Movie list with card-based layout
-- Movie detail page with complete metadata
-- Add/remove favorite functionality
-- Favorites page
-- Empty state for no results
-- English and Indonesian locale support
+- Login page with protected routes
+- Search movies by title
+- Movie list page with card layout
+- Movie detail page with full metadata
+- Favorite toggle and session-based state
+- Empty state handling for no results
+- English and Indonesian language support
 - OMDb API integration
 
-## Technologies and Libraries
+## Technology Stack
 
 - PHP
 - Laravel
-- Blade templating
-- Guzzle HTTP client
+- Blade Templates
+- Guzzle HTTP Client
 - OMDb API
-- Session-based authentication
-- Custom middleware for auth and locale handling
+- Session-based Authentication
+- Custom Middleware
 
-## Architecture
-
-This project follows the standard Laravel MVC architecture:
+## Project Structure
 
 - Routes: `routes/web.php`
 - Controller: `app/Http/Controllers/MovieController.php`
-- Middleware: `app/Http/Middleware/EnsureMovieUserAuthenticated.php`, `app/Http/Middleware/SetLocale.php`
 - Views: `resources/views`
-- Language files: `resources/lang`
-- HTTP data integration: OMDb API through Guzzle
-
-The flow is request -> route -> controller -> view, with movie data retrieved from OMDb and favorite state stored in session.
+- Language Files: `resources/lang`
+- Middleware: `app/Http/Middleware`
+- API Integration: OMDb via Guzzle
 
 ## Screenshots
 
-The app includes a modern dark-themed interface for the login screen, movie list page, and movie detail page.
+### 1. Login Page
 
-### Login page
+![Login page](docs/screenshots/login.png)
 
-![Login page](https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1200&q=80)
+### 2. Movie List Page
 
-### Movie list page
+![Movie list page](docs/screenshots/list.png)
 
-![Movie listing](https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=1200&q=80)
+### 3. Movie Detail Page
 
-### Movie detail page
-
-![Movie detail](https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=1200&q=80)
+![Movie detail page](docs/screenshots/detail.png)
 
 ## Run Locally
 
@@ -70,7 +63,7 @@ php artisan key:generate
 php artisan serve --host=127.0.0.1 --port=8000
 ```
 
-Then open the app in the browser:
+Open in browser:
 
 ```text
 http://127.0.0.1:8000/login
@@ -78,10 +71,10 @@ http://127.0.0.1:8000/login
 
 ## Notes
 
-- OMDb API key is configured through the `OMDB_API_KEY` environment variable.
-- The app uses session-based authentication and protected routes.
-- Proper empty-state handling is implemented whenever data is missing or not found.
+- `OMDB_API_KEY` is configured in the environment file.
+- Authentication is handled with Laravel session-based login.
+- If a movie search returns no results, the app shows a proper empty state.
 
 ## License
 
-This project is intended for coursework/demo use and should be shared with restricted access only unless the assignment explicitly allows broader publication.
+This project is intended for coursework and demo evaluation only. Sharing the source code publicly should be avoided unless the assignment explicitly permits it.
