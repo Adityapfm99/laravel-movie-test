@@ -12,6 +12,23 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 COPY . /var/www/html
 COPY .env.example /var/www/html/.env
 
+RUN printf '%s\n' \
+    'APP_NAME=Laravel' \
+    'APP_ENV=production' \
+    'APP_KEY=base64:qh6vy8yQR6+vhpJHb5oxUwU9mjurDhLO219JCSmjqLY=' \
+    'APP_DEBUG=false' \
+    'APP_URL=https://laravel-movie-test.onrender.com' \
+    'APP_LOCALE=en' \
+    'APP_FALLBACK_LOCALE=en' \
+    'APP_FAKER_LOCALE=en_US' \
+    'OMDB_API_KEY=43c88679' \
+    'DB_CONNECTION=sqlite' \
+    'DB_DATABASE=/tmp/laravel-movie-test.sqlite' \
+    'CACHE_STORE=database' \
+    'QUEUE_CONNECTION=database' \
+    'SESSION_DRIVER=database' \
+    > /var/www/html/.env
+
 RUN git config --global --add safe.directory /var/www/html
 RUN composer install --no-interaction --prefer-dist --no-progress --no-scripts --optimize-autoloader
 RUN php artisan key:generate --force
